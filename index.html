@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Calculator</title>
+        <style>
+            *{
+                box-sizing: border-box;
+                
+            }
+
+            body{
+                background-image: linear-gradient(rgb(87, 54, 188), rgb(255, 255, 251));
+                background-size:cover;
+                height: 100vw;
+                background-repeat: no-repeat;
+
+            }
+
+            .calc{
+                margin: auto;
+                border: 2px solid black;
+                width: 33%;
+                height:25vw;
+            }
+            .calc th{
+                border: 2px solid black;
+                background-color: white;
+                height: 2cm;
+            }
+            .calc td{
+                
+                width: 25%;
+            }
+            .calc button{
+                font-size: larger;
+                font-weight: 900;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(138, 43, 226,0.6);
+            }
+
+        </style>
+        <script>
+            var showequation;
+            var equation="";
+
+            function addtoequation(val){
+                showequation=document.getElementById('equation');
+                if(val==='*'){
+                    showequation.innerHTML+='x';
+                    equation+=val;
+                }else{
+                    showequation.innerHTML+=val;
+                    equation+=val;
+                }
+            }
+
+            function clearequation(){
+                showequation.innerHTML="";
+                equation=""
+            }
+
+            function evaluateequation(){
+                var ans=eval(equation)
+                showequation.innerHTML=ans;
+            }
+
+            function backspace(){
+                showequation.innerHTML=showequation.innerHTML.slice(0,showequation.innerHTML.length-1)
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <table class="calc">
+                <tr>
+                    <th colspan=" 4" id="equation"></th>
+                </tr>
+                <tr>
+                    <td><button onclick="clearequation()">AC</button></td>
+                    <td><button onclick="backspace()">Backspace</button></td>
+                    <td onclick="addtoequation('/')"><button>/</button></td>
+                    <td onclick="addtoequation('%')"><button>%</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="addtoequation('7')">7</button></td>
+                    <td><button onclick="addtoequation('8')">8</button></td>
+                    <td><button onclick="addtoequation('8')">9</button></td>
+                    <td><button onclick="addtoequation('*')">x</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="addtoequation('4')">4</button></td>
+                    <td><button onclick="addtoequation('5')">5</button></td>
+                    <td><button onclick="addtoequation('5')">6</button></td>
+                    <td><button onclick="addtoequation('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="addtoequation('1')">1</button></td>
+                    <td><button onclick="addtoequation('2')">2</button></td>
+                    <td><button onclick="addtoequation('3')">3</button></td>
+                    <td><button onclick="addtoequation('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button>none</button></td>
+                    <td><button onclick="addtoequation('0')">0</button></td>
+                    <td><button onclick="addtoequation('.')">.</button></td>
+                    <td><button onclick="evaluateequation()">=</button></td>
+                </tr>
+        </table>
+
+    </body>
+</html>
